@@ -1,0 +1,16 @@
+<div class="form-container">
+  <h2>{{ isEditing ? 'Editar Produto' : 'Adicionar Produto' }}</h2>
+  <label>Nome:</label>
+  <input type="text" [(ngModel)]="product.name" required>
+
+  <label>Unidade:</label>
+  <input type="text" [(ngModel)]="product.unit" required>
+
+  <label>Preço:</label>
+  <input type="number" [(ngModel)]="product.price" required>
+
+  <label>Ativo:</label>
+  <input type="checkbox" [(ngModel)]="product.active">
+
+  <button (click)="saveProduct()">{{ isEditing ? 'Salvar Alterações' : 'Adicionar Produto' }}</button>
+</div>
