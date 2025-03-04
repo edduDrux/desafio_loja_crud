@@ -7,7 +7,7 @@ import { ProductService } from '../../services/product.service';
   selector: 'app-product-form',
   standalone: false,
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
   product: Product = { id: '', name: '', unit: '', price: 0, active: true };

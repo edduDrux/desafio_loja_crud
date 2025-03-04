@@ -1,0 +1,68 @@
+$primary-color: #007bff;
+$border-radius: 8px;
+
+.form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 24px;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    color: #333;
+  }
+
+  label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin: 10px 0 5px;
+  }
+
+  input {
+    width: 95%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: $border-radius;
+    font-size: 1rem;
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
+    }
+  }
+
+  input[type="checkbox"] {
+    width: auto;
+    margin-left: 8px;
+    accent-color: $primary-color;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    background: $primary-color;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+
+    &:hover {
+      background: darken($primary-color, 10%);
+    }
+  }
+}
+
+/* Responsividade */
+@media (max-width: 450px) {
+  .form-container {
+    width: 90%;
+  }
+}
