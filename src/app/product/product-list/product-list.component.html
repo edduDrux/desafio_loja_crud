@@ -1,5 +1,5 @@
 <div class="product-list-container">
-  <!-- Container superior para botões e busca -->
+
   <div class="header-container">
     <div class="left-actions">
       <button *ngIf="isManager" (click)="addProduct()" class="add-product-btn">Adicionar Produto</button>
@@ -8,10 +8,8 @@
     <button (click)="logout()" class="logout-btn">Logout</button>
   </div>
 
-  <!-- Título da lista -->
   <h2>Lista de Produtos</h2>
 
-  <!-- Tabela de produtos -->
   <table>
     <thead>
       <tr>
@@ -43,7 +41,6 @@
   </table>
 </div>
 
-<!-- Modal de Exclusão -->
 <app-product-delete 
   *ngIf="showDeleteModal" 
   [productName]="productToDeleteName" 

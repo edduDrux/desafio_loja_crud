@@ -25,6 +25,9 @@ export class AuthService {
         localStorage.setItem('user', JSON.stringify(response.user));
         this.authStatus.next(true);
         this.userRoles = response.user.roles;
+  
+        const redirectUrl = localStorage.getItem('redirectUrl') || '/';
+        this.router.navigateByUrl(redirectUrl);
       })
     );
   }
@@ -37,7 +40,12 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    if (!token) return false;
+  
+    const tokenData = JSON.parse(atob(token.split('.')[1]));
+    const expirationDate = new Date(tokenData.exp * 1000);
+    return expirationDate > new Date();
   }
 
   hasRole(role: string): boolean {

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, delay, map, Observable, of, Subject, tap } from 'rxjs';
+import { catchError, map, Observable, Subject, tap } from 'rxjs';
 import { Product } from '../models/product';
 import { AuthService } from './auth.service';
 
@@ -44,15 +44,15 @@ export class ProductService {
   }
 
   addProduct(product: Partial<Product>): Observable<Product> {
-    console.log('Sending product to API:', product); // Log para depuração
+    console.log('Sending product to API:', product); 
   
     return this.http.post<Product>(this.apiUrl, product, this.getHeaders()).pipe(
       tap((response) => {
-        console.log('Product added successfully:', response); // Log para depuração
-        this.productAddedSubject.next(); // Emite o evento após adicionar o produto
+        console.log('Product added successfully:', response); 
+        this.productAddedSubject.next(); 
       }),
       catchError((error) => {
-        console.error('Error adding product:', error); // Log para depuração
+        console.error('Error adding product:', error); 
         throw error;
       })
     );
