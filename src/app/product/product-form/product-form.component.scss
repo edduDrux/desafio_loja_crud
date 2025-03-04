@@ -60,6 +60,22 @@ $border-radius: 8px;
   }
 }
 
+.activeCheckbox {
+  justify-content: start;
+  align-items: center;
+  display: flex;
+  padding-top: 0.725rem;
+  
+  span {
+    font-weight: 600;
+  }
+
+  input{
+    width: 1rem !important;
+    height: 1rem ;
+  }
+}
+
 @media (max-width: 450px) {
   .form-container {
     width: 90%;

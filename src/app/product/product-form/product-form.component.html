@@ -9,8 +9,9 @@
   <label>Preço:</label>
   <input type="number" [(ngModel)]="product.price" required>
 
-  <label>Ativo:</label>
-  <input type="checkbox" [(ngModel)]="product.active">
-
+  <div class="activeCheckbox">
+    <span>Ativo:</span>
+    <input type="checkbox" [(ngModel)]="product.active">
+  </div>
   <button (click)="saveProduct()">{{ isEditing ? 'Salvar Alterações' : 'Adicionar Produto' }}</button>
 </div>

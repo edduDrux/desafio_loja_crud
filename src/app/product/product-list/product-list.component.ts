@@ -15,7 +15,6 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   searchText: string = '';
   isManager: boolean = false;
-  isClient: boolean = false;
   showDeleteModal: boolean = false;
   productToDeleteId: string | null = null;
   productToDeleteName: string = '';
