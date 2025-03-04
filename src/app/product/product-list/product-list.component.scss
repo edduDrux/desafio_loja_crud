@@ -1,0 +1,124 @@
+.product-list-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .left-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .add-product-btn {
+        padding: 8px 12px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #218838;
+        }
+      }
+
+      .search-input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        width: 200px;
+      }
+    }
+
+    .logout-btn {
+      padding: 8px 12px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .edit-btn, .delete-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px; /* Espaço entre ícone e texto */
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-left: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-1px); /* Efeito de levantar ao passar o mouse */
+      }
+
+      i {
+        font-size: 14px;
+      }
+    }
+
+    .edit-btn {
+      background-color: #ffc107; /* Amarelo para editar */
+      color: black;
+
+      &:hover {
+        background-color: #e0a800; /* Amarelo mais escuro ao passar o mouse */
+      }
+    }
+
+    .delete-btn {
+      background-color: #dc3545; /* Vermelho para excluir */
+      color: white;
+
+      &:hover {
+        background-color: #c82333; /* Vermelho mais escuro ao passar o mouse */
+      }
+    }
+  }
+}

@@ -9,12 +9,15 @@ import { ProductService } from '../../services/product.service';
   selector: 'app-product-list',
   standalone: false,
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   searchText: string = '';
   isManager: boolean = false;
+  showDeleteModal: boolean = false;
+  productToDeleteId: string | null = null;
+  productToDeleteName: string = '';
 
   constructor(
     private decimalPipe: DecimalPipe,
@@ -27,14 +30,13 @@ export class ProductListComponent implements OnInit {
     this.isManager = this.authService.hasRole('GERENTE');
     this.reloadProducts();
 
-    
     this.productService.productAdded$.subscribe(() => {
       this.reloadProducts();
     });
   }
 
   logout() {
-    this.authService.logout(); // Chama o método de logout
+    this.authService.logout();
   }
 
   formatPrice(price: number): string {
@@ -55,18 +57,33 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['/product/edit', id]);
   }
 
-  deleteProduct(id: string, name: string) {
-    const shouldDelete = confirm(`Tem certeza que deseja excluir "${name}"?`);
-    if (shouldDelete) {
-      this.productService.deleteProduct(id).subscribe({
+  openDeleteModal(id: string, name: string) {
+    this.productToDeleteId = id;
+    this.productToDeleteName = name;
+    this.showDeleteModal = true;
+  }
+
+  handleDeleteConfirmation(confirm: boolean) {
+    if (confirm && this.productToDeleteId) {
+      this.productService.deleteProduct(this.productToDeleteId).subscribe({
         next: () => {
-          this.products = this.products.filter(product => product.id !== id);
+          this.products = this.products.filter(product => product.id !== this.productToDeleteId);
+          this.closeDeleteModal();
         },
         error: (err) => {
           console.error('Error deleting product:', err);
+          this.closeDeleteModal();
         }
       });
+    } else {
+      this.closeDeleteModal();
     }
+  }
+
+  closeDeleteModal() {
+    this.showDeleteModal = false;
+    this.productToDeleteId = null;
+    this.productToDeleteName = '';
   }
 
   reloadProducts() {
