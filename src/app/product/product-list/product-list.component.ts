@@ -15,9 +15,14 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   searchText: string = '';
   isManager: boolean = false;
+  isClient: boolean = false;
   showDeleteModal: boolean = false;
   productToDeleteId: string | null = null;
   productToDeleteName: string = '';
+  currentPage: number = 1;
+  totalProducts: number = 0;
+  itemsPerPage: number = 10;
+  hasMoreProducts: boolean = false;
 
   constructor(
     private decimalPipe: DecimalPipe,
@@ -87,13 +92,19 @@ export class ProductListComponent implements OnInit {
   }
 
   reloadProducts() {
-    this.productService.getProducts(1, 10).subscribe({
+    this.productService.getProducts(this.currentPage, this.itemsPerPage).subscribe({
       next: (data) => {
         this.products = data;
+        this.hasMoreProducts = data.length === this.itemsPerPage;
       },
       error: (err) => {
         console.error('Error fetching products:', err);
       }
     });
+  }
+
+  onPageChange(page: number) {
+    this.currentPage = page;
+    this.reloadProducts();
   }
 }

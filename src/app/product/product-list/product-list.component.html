@@ -8,12 +8,13 @@
     <button (click)="logout()" class="logout-btn">Logout</button>
   </div>
 
-  <h2>Lista de Produtos</h2>
+  <h2 *ngIf="isManager">Meus Produtos</h2>
+  <h2 *ngIf="isClient">Produtos Disponiveis</h2>
 
   <table>
     <thead>
       <tr>
-        <th>ID</th>
+        <th *ngIf="isManager">ID</th>
         <th>Nome</th>
         <th>Unidade</th>
         <th>Preço</th>
@@ -23,7 +24,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let product of products">
-        <td>{{ product.id }}</td>
+        <td *ngIf="isManager">{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.unit }}</td>
         <td>R$ {{ formatPrice(product.price) }}</td>
@@ -39,6 +40,12 @@
       </tr>
     </tbody>
   </table>
+
+  <div class="pagination-controls">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }}</span>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="!hasMoreProducts">Próxima</button>
+  </div>
 </div>
 
 <app-product-delete 
