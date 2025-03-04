@@ -4,7 +4,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'app-product-delete',
   standalone: false,
   templateUrl: './product-delete.component.html',
-  styleUrls: ['./product-delete.component.css']
+  styleUrls: ['./product-delete.component.scss']
 })
 export class ProductDeleteComponent {
   @Input() productName!: string;
