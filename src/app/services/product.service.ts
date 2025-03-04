@@ -31,7 +31,7 @@ export class ProductService {
     const params = { page: page.toString(), limit: limit.toString() };
     return this.http.get<{ data: Product[] }>(this.apiUrl, { ...this.getHeaders(), params })
       .pipe(
-        map(response => response.data) // Extrai a propriedade 'data' da resposta
+        map(response => response.data)
       );
   }
 
@@ -56,10 +56,6 @@ export class ProductService {
         throw error;
       })
     );
-  }
-
-  addProductMock(product: Product): Observable<Product> {
-    return of(product).pipe(delay(1000)); // Simula uma requisição assíncrona
   }
   
   updateProduct(id: string, product: Partial<Product>): Observable<Product> {
