@@ -1,7 +1,11 @@
 <div class="login-container">
   <h2>Login</h2>
-  <input type="email" [(ngModel)]="email" placeholder="Email">
-  <input type="password" [(ngModel)]="password" placeholder="Senha">
+  <div class="input-group" data-icon="📧">
+    <input type="email" [(ngModel)]="email" placeholder="Email">
+  </div>
+  <div class="input-group" data-icon="🔒">
+    <input type="password" [(ngModel)]="password" placeholder="Senha">
+  </div>
   <button (click)="login()">Entrar</button>
   <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
 </div>

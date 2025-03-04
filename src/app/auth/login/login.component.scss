@@ -1,0 +1,100 @@
+$primary-color: #007bff;
+$error-color: #e63946;
+$border-radius: 8px;
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 32px;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeIn 0.4s ease-in-out;
+
+  h2 {
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+    color: #333;
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin-bottom: 16px;
+
+    input {
+      flex: 1;
+      padding: 12px 40px;
+      border: 2px solid #ddd;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      transition: border 0.3s ease-in-out;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+      }
+    }
+
+    &::before {
+      content: attr(data-icon);
+      position: absolute;
+      left: 12px;
+      font-size: 1.2rem;
+      color: #888;
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: $primary-color;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+
+    &:hover {
+      background: darken($primary-color, 10%);
+      transform: translateY(-2px);
+    }
+  }
+
+  .error {
+    margin-top: 12px;
+    color: $error-color;
+    font-weight: bold;
+  }
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 450px) {
+  .login-container {
+    width: 90%;
+    padding: 24px;
+  }
+}
