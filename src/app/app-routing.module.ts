@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductListComponent } from './product/product-list/product-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ProductFormComponent } from './product/product-form/product-form.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [

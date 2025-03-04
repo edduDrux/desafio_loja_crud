@@ -1,28 +1,28 @@
 <div>
-    <h2>Lista de Produtos</h2>
-    <button *ngIf="isManager" (click)="addProduct()">Adicionar Produto</button>
-    <input type="text" [(ngModel)]="searchText" (input)="search()" placeholder="Buscar produto...">
-    
-    <table border="1">
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Unidade</th>
-        <th>Preço</th>
-        <th>Ativo</th>
-        <th *ngIf="isManager">Ações</th>
-      </tr>
-      <tr *ngFor="let product of products">
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.unit }}</td>
-        <td>R$ {{ formatPrice(product.price) }}</td>
-        <td>{{ product.active ? 'Sim' : 'Não' }}</td>
-        <td *ngIf="isManager">
-          <button (click)="editProduct(product.id)">Editar</button>
-          <button (click)="deleteProduct(product.id, product.name)">Excluir</button>
-        </td>
-      </tr>
-    </table>
-  </div>
+  <h2>Lista de Produtos</h2>
+  <button (click)="logout()">Logout</button>
+  <button *ngIf="isManager" (click)="addProduct()">Adicionar Produto</button>
+  <input type="text" [(ngModel)]="searchText" (input)="search()" placeholder="Buscar produto...">
   
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Unidade</th>
+      <th>Preço</th>
+      <th>Ativo</th>
+      <th *ngIf="isManager">Ações</th>
+    </tr>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.unit }}</td>
+      <td>R$ {{ formatPrice(product.price) }}</td>
+      <td>{{ product.active ? 'Sim' : 'Não' }}</td>
+      <td *ngIf="isManager">
+        <button (click)="editProduct(product.id)">Editar</button>
+        <button (click)="deleteProduct(product.id, product.name)">Excluir</button>
+      </td>
+    </tr>
+  </table>
+</div>

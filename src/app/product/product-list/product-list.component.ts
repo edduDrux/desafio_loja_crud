@@ -1,6 +1,6 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DecimalPipe } from '@angular/common';
 import { Product } from '../../models/product';
 import { AuthService } from '../../services/auth.service';
 import { ProductService } from '../../services/product.service';
@@ -32,7 +32,11 @@ export class ProductListComponent implements OnInit {
       this.reloadProducts();
     });
   }
-  
+
+  logout() {
+    this.authService.logout(); // Chama o método de logout
+  }
+
   formatPrice(price: number): string {
     return this.decimalPipe.transform(price, '1.2-2') || '0.00';
   }
